@@ -19,8 +19,6 @@ class Enseignant(models.Model):
     email = models.TextField(db_column='EMAIL', blank=True, null=True)
     photo = models.TextField(db_column='PHOTO', blank=True, null=True)
 
-    codedept = models.ForeignKey(Departement, models.DO_NOTHING, db_column='CODEDEPT',
-                                    related_name='ens_dep_codedept', blank=True, null=True)
 
 
     class Meta:
@@ -136,7 +134,13 @@ class Session(models.Model):
     class Meta:
         db_table = 'SESSION'
 
-
+class Note(models.Model):
+    numinscription = models.ForeignKey(Etudiant, models.CASCADE, db_column='NUMINSCRIPTION', blank=True, null=True)
+    codefiliere = models.ForeignKey(Filiere, models.CASCADE, db_column='CODEFILIERE', blank=True, null=True)
+    codemodule = models.ForeignKey(Module, models.CASCADE, db_column='CODEMODULE', blank=True, null=True)
+    codeelmodule = models.ForeignKey(Elementmodule, models.CASCADE, db_column='CODEELMODULE', blank=True, null=True)
+    numsession = models.ForeignKey(Session, models.CASCADE, db_column='NUMSESSION', blank=True, null=True)
+    note = models.FloatField(db_column='NOTE', blank=True, null=True)
 
 class Infosuretudiant(models.Model):
     numinscription = models.ForeignKey(Etudiant, models.CASCADE, db_column='NUMINSCRIPTION',
@@ -144,6 +148,7 @@ class Infosuretudiant(models.Model):
 
     datenaissance = models.DateField(db_column='DATENAISSANCE', blank=True, null=True)
     dateobtentionbac = models.DateField(db_column='DATEOBTENTIONBAC', blank=True, null=True)
+
     typebac = models.TextField(db_column='TYPEBAC', blank=True, null=True)
     mention = models.TextField(db_column='MENTION', blank=True, null=True)
     lycee = models.TextField(db_column='LYCEE', blank=True, null=True)
@@ -159,8 +164,6 @@ class Infosuretudiant(models.Model):
 
     class Meta:
         db_table = 'INFOSURETUDIANT'
-
-
 
 
 
