@@ -12,6 +12,9 @@ class Departement(models.Model):
     class Meta:
         db_table = 'DEPARTEMENT'
 
+    def __str__(self):
+        return self.codedept
+
 
 class Enseignant(models.Model):
     codeenseignant = models.TextField(db_column='CODEENSEIGNANT', primary_key=True)
@@ -24,6 +27,8 @@ class Enseignant(models.Model):
     class Meta:
         db_table = 'ENSEIGNANT'
 
+    def __str__(self):
+        return self.codeenseignant
 
 class Filiere(models.Model):
     codefiliere = models.TextField(db_column='CODEFILIERE', primary_key=True)
@@ -40,6 +45,8 @@ class Filiere(models.Model):
     class Meta:
         db_table = 'FILIERE'
 
+    def __str__(self):
+        return self.codefiliere
 
 class Etudiant(models.Model):
     numinscription = models.TextField(db_column='NUMINSCRIPTION', primary_key=True)
@@ -57,6 +64,9 @@ class Semestre(models.Model):
 
     class Meta:
         db_table = 'SEMESTRE'
+
+    def __str__(self):
+        return self.idsemestre
 
 
 class Module(models.Model):
@@ -94,6 +104,9 @@ class ElementModule(models.Model):
         db_table = 'ELEMENTMODULE'
         unique_together = (('codefiliere', 'codemodule', 'codeelmodule'),)
 
+    def __str__(self):
+        return self.codeelmodule
+
 
 class Naturecours(models.Model):
     typecours = models.TextField(db_column='TYPECOURS', primary_key=True)
@@ -103,6 +116,8 @@ class Naturecours(models.Model):
     class Meta:
         db_table = 'NATURECOURS'
 
+    def __str__(self):
+        return self.typecours
 
 class Classe(models.Model):
     codeclasse = models.TextField(db_column='CODECLASSE', primary_key=True)
@@ -111,11 +126,20 @@ class Classe(models.Model):
     class Meta:
         db_table = 'CLASSE'
 
+    def __str__(self):
+        return self.codeclasse
+
 
 class ClassEtudiant(models.Model):
     codeclass = models.ForeignKey(Classe, models.CASCADE, db_column='CODECLASS', blank=True, null=True)
     numinscription = models.ForeignKey(Etudiant, models.CASCADE, db_column='NUMINSCRIPTION', blank=True, null=True)
 
+    class Meta:
+        db_table = 'CLASSEETUDIANT'
+        unique_together = (('codeclass', 'numinscription'),)
+
+    def __str__(self):
+        return self.codeclass + " " + self.numinscription
 
 class ChargeHoraireEnseignant(models.Model):
     codeenseignant = models.ForeignKey(Enseignant, models.CASCADE, db_column='CODEENSEIGNANT', blank=True, null=True)
@@ -124,11 +148,15 @@ class ChargeHoraireEnseignant(models.Model):
     codeelmodule = models.ForeignKey(ElementModule, models.CASCADE, db_column='CODEELMODULE', blank=True, null=True)
     codeclass = models.ForeignKey(Classe, models.CASCADE, db_column='CODECLASS', blank=True, null=True)
     typecours = models.ForeignKey(Naturecours, models.CASCADE, db_column='TYPECOURS', blank=True, null=True)
-    vhglobal = models.IntegerField(db_column='VHGLOBAL', blank=True, null=True)
+    vhglobal = models.FloatField(db_column='VHGLOBAL', blank=True, null=True)
 
 
     class Meta:
         db_table = 'CHARGEHORAIREENSEIGNANT'
+
+    def __str__(self):
+        return str(self.codeenseignant) + " " + str(self.codefiliere) + " " + str(self.codemodule) + " "\
+            + str(self.codeelmodule) + " " + str(self.codeclass) + " " + str(self.typecours)
 
 
 class Session(models.Model):
@@ -137,6 +165,9 @@ class Session(models.Model):
 
     class Meta:
         db_table = 'SESSION'
+
+    def __str__(self):
+        return self.numsession
 
 
 class Note(models.Model):

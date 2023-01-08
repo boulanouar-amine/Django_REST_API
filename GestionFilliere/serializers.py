@@ -82,3 +82,13 @@ class SessionSerializer(serializers.ModelSerializer):
         model = Session
         fields = '__all__'
 
+
+class ChargeHoraireEnseignantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChargeHoraireEnseignant
+        fields = '__all__'
+
+class NoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        fields = '__all__'

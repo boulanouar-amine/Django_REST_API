@@ -15,7 +15,10 @@ router.register(r'elementmodule', ElementmoduleViewSet)
 router.register(r'naturecours', NaturecoursViewSet)
 router.register(r'classe', ClasseViewSet)
 router.register(r'classe_etudiant', ClassEtudiantViewSet)
+router.register(r'charge_horaire_enseignant', ChargeHoraireEnseignantViewSet)
+router.register(r'session', SessionViewSet)
 router.register(r'infosuretudiant', InfosuretudiantViewSet)
+router.register(r'notes', NoteViewSet)
 
 
 urlpatterns = [

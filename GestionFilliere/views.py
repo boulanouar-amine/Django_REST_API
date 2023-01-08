@@ -59,3 +59,15 @@ class NaturecoursViewSet(viewsets.ModelViewSet):
 class SemestreViewSet(viewsets.ModelViewSet):
     queryset = Semestre.objects.all()
     serializer_class = SemestreSerializer
+
+class ChargeHoraireEnseignantViewSet(viewsets.ModelViewSet):
+    queryset = ChargeHoraireEnseignant.objects.all()
+    serializer_class = ChargeHoraireEnseignantSerializer
+
+class SessionViewSet(viewsets.ModelViewSet):
+    queryset = Session.objects.all()
+    serializer_class = SessionSerializer
+
+class NoteViewSet(viewsets.ModelViewSet):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
