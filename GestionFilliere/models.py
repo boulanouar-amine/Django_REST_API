@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Departement(models.Model):
     codedept = models.TextField(db_column='CODEDEPT', primary_key=True)
     libelledept = models.TextField(db_column='LIBELLEDEPT', blank=True, null=True)
@@ -11,6 +12,7 @@ class Departement(models.Model):
     class Meta:
         db_table = 'DEPARTEMENT'
 
+
 class Enseignant(models.Model):
     codeenseignant = models.TextField(db_column='CODEENSEIGNANT', primary_key=True)
     nomenseignant = models.TextField(db_column='NOMENSEIGNANT', blank=True, null=True)
@@ -19,10 +21,9 @@ class Enseignant(models.Model):
     email = models.TextField(db_column='EMAIL', blank=True, null=True)
     photo = models.TextField(db_column='PHOTO', blank=True, null=True)
 
-
-
     class Meta:
         db_table = 'ENSEIGNANT'
+
 
 class Filiere(models.Model):
     codefiliere = models.TextField(db_column='CODEFILIERE', primary_key=True)
@@ -31,17 +32,13 @@ class Filiere(models.Model):
     dureeaccreditation = models.TextField(db_column='DUREEACCREDITATION', blank=True, null=True)
 
     codedept = models.ForeignKey(Departement, models.CASCADE, db_column='CODEDEPT',
-                                       related_name='fil_dep_codedept', blank=True, null=True)
+                                 related_name='fil_dep_codedept', blank=True, null=True)
 
     codeenseignant = models.ForeignKey(Enseignant, models.DO_NOTHING, db_column='CODEENSEIGNANT',
                                        related_name='fil_ens_codeenseignant', blank=True, null=True)
 
-
-
     class Meta:
         db_table = 'FILIERE'
-
-
 
 
 class Etudiant(models.Model):
@@ -64,34 +61,38 @@ class Semestre(models.Model):
 
 class Module(models.Model):
     codefiliere = models.ForeignKey(Filiere, models.CASCADE, db_column='CODEFILIERE', blank=True, null=True)
-    codemodule = models.TextField(db_column='CODEMODULE', primary_key=True)
+    codemodule = models.TextField(db_column='CODEMODULE')
     libellemodule = models.TextField(db_column='LIBELLEMODULE', blank=True, null=True)
     naturemodule = models.TextField(db_column='NATUREMODULE', blank=True, null=True)
-    idsemestre = models.ForeignKey('Semestre', models.DO_NOTHING, db_column='IDSEMESTRE',blank=True, null=True)
-    codeenseignant = models.ForeignKey(Enseignant, models.DO_NOTHING, db_column='CODEENSEIGNANT',blank=True, null=True)
+    idsemestre = models.ForeignKey('Semestre', models.DO_NOTHING, db_column='IDSEMESTRE', blank=True, null=True)
+    codeenseignant = models.ForeignKey(Enseignant, models.DO_NOTHING, db_column='CODEENSEIGNANT', blank=True, null=True)
 
     class Meta:
         db_table = 'MODULE'
+        unique_together = (('codefiliere', 'codemodule'),)
 
-class Elementmodule(models.Model):
+    def __str__(self):
+        return self.codemodule
 
+
+class ElementModule(models.Model):
     codefiliere = models.ForeignKey(Filiere, models.CASCADE, db_column='CODEFILIERE', blank=True, null=True)
 
-    codemodule = models.ForeignKey('Module', models.DO_NOTHING, db_column='CODEMODULE',
+    codemodule = models.ForeignKey(Module, models.DO_NOTHING, db_column='CODEMODULE',
                                    related_name="ele_mod_codemodule", blank=True, null=True)
-    #code elemet du module
-    codeelmodule = models.TextField(db_column='CODEELMODULE', primary_key=True)
-
+    # code elemet du module
+    codeelmodule = models.TextField(db_column='CODEELMODULE')
 
     libelleelmodule = models.TextField(db_column='LIBELLEELMODULE', blank=True, null=True)
-    coefficient = models.IntegerField(db_column='COEFFICIENT', blank=True, null=True)
-    vh_cm = models.IntegerField(db_column='VH_CM', blank=True, null=True)
-    vh_td = models.IntegerField(db_column='VH_TD', blank=True, null=True)
-    vh_tp = models.IntegerField(db_column='VH_TP', blank=True, null=True)
-    vh_ec = models.IntegerField(db_column='VH_EC', blank=True, null=True)
+    coefficient = models.FloatField(db_column='COEFFICIENT', blank=True, null=True)
+    vh_cm = models.FloatField(db_column='VH_CM', blank=True, null=True)
+    vh_td = models.FloatField(db_column='VH_TD', blank=True, null=True)
+    vh_tp = models.FloatField(db_column='VH_TP', blank=True, null=True)
+    vh_ec = models.FloatField(db_column='VH_EC', blank=True, null=True)
 
     class Meta:
         db_table = 'ELEMENTMODULE'
+        unique_together = (('codefiliere', 'codemodule', 'codeelmodule'),)
 
 
 class Naturecours(models.Model):
@@ -111,21 +112,24 @@ class Classe(models.Model):
         db_table = 'CLASSE'
 
 
-
 class ClassEtudiant(models.Model):
     codeclass = models.ForeignKey(Classe, models.CASCADE, db_column='CODECLASS', blank=True, null=True)
     numinscription = models.ForeignKey(Etudiant, models.CASCADE, db_column='NUMINSCRIPTION', blank=True, null=True)
+
 
 class ChargeHoraireEnseignant(models.Model):
     codeenseignant = models.ForeignKey(Enseignant, models.CASCADE, db_column='CODEENSEIGNANT', blank=True, null=True)
     codefiliere = models.ForeignKey(Filiere, models.CASCADE, db_column='CODEFILIERE', blank=True, null=True)
     codemodule = models.ForeignKey(Module, models.CASCADE, db_column='CODEMODULE', blank=True, null=True)
-    codeelmodule = models.ForeignKey(Elementmodule, models.CASCADE, db_column='CODEELMODULE', blank=True, null=True)
+    codeelmodule = models.ForeignKey(ElementModule, models.CASCADE, db_column='CODEELMODULE', blank=True, null=True)
     codeclass = models.ForeignKey(Classe, models.CASCADE, db_column='CODECLASS', blank=True, null=True)
     typecours = models.ForeignKey(Naturecours, models.CASCADE, db_column='TYPECOURS', blank=True, null=True)
     vhglobal = models.IntegerField(db_column='VHGLOBAL', blank=True, null=True)
+
+
     class Meta:
         db_table = 'CHARGEHORAIREENSEIGNANT'
+
 
 class Session(models.Model):
     numsession = models.AutoField(db_column='NUMSESSION', primary_key=True)
@@ -134,13 +138,15 @@ class Session(models.Model):
     class Meta:
         db_table = 'SESSION'
 
+
 class Note(models.Model):
     numinscription = models.ForeignKey(Etudiant, models.CASCADE, db_column='NUMINSCRIPTION', blank=True, null=True)
     codefiliere = models.ForeignKey(Filiere, models.CASCADE, db_column='CODEFILIERE', blank=True, null=True)
     codemodule = models.ForeignKey(Module, models.CASCADE, db_column='CODEMODULE', blank=True, null=True)
-    codeelmodule = models.ForeignKey(Elementmodule, models.CASCADE, db_column='CODEELMODULE', blank=True, null=True)
+    codeelmodule = models.ForeignKey(ElementModule, models.CASCADE, db_column='CODEELMODULE', blank=True, null=True)
     numsession = models.ForeignKey(Session, models.CASCADE, db_column='NUMSESSION', blank=True, null=True)
     note = models.FloatField(db_column='NOTE', blank=True, null=True)
+
 
 class Infosuretudiant(models.Model):
     numinscription = models.ForeignKey(Etudiant, models.CASCADE, db_column='NUMINSCRIPTION',
@@ -166,15 +172,13 @@ class Infosuretudiant(models.Model):
         db_table = 'INFOSURETUDIANT'
 
 
-
-
 class Reservation(models.Model):
     datehoraire = models.DateField(db_column='DATEHORAIRE', primary_key=True)
     heuredebut = models.TimeField(db_column='HEUREDEBUT')
 
     codeenseignant = models.ForeignKey(Enseignant, models.CASCADE, db_column='CODEENSEIGNANT')
     typecours = models.ForeignKey(Naturecours, models.DO_NOTHING, db_column='TYPECOURS', blank=True, null=True)
-    codeelmodule = models.ForeignKey(Elementmodule, models.DO_NOTHING, db_column='CODEELMODULE')
+    codeelmodule = models.ForeignKey(ElementModule, models.DO_NOTHING, db_column='CODEELMODULE')
     idsalle = models.ForeignKey('Salle', models.DO_NOTHING, db_column='IDSALLE')
 
     heurefin = models.TimeField(db_column='HEUREFIN', blank=True, null=True)
@@ -200,6 +204,3 @@ class Semaines(models.Model):
 
     class Meta:
         db_table = 'SEMAINES'
-
-
-

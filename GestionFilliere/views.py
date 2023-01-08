@@ -17,14 +17,14 @@ class FiliereViewSet(viewsets.ModelViewSet):
     serializer_class = FiliereSerializer
 
 
-class EtudiantViewSet(viewsets.ModelViewSet):
-    queryset = Etudiant.objects.all()
-    serializer_class = EtudiantSerializer
-
-
 class EnseignantViewSet(viewsets.ModelViewSet):
     queryset = Enseignant.objects.all()
     serializer_class = EnseignantSerializer
+
+
+class EtudiantViewSet(viewsets.ModelViewSet):
+    queryset = Etudiant.objects.all()
+    serializer_class = EtudiantSerializer
 
 
 class ClasseViewSet(viewsets.ModelViewSet):
@@ -32,8 +32,13 @@ class ClasseViewSet(viewsets.ModelViewSet):
     serializer_class = ClasseSerializer
 
 
+class ClassEtudiantViewSet(viewsets.ModelViewSet):
+    queryset = ClassEtudiant.objects.all()
+    serializer_class = ClassEtudiantSerializer
+
+
 class ElementmoduleViewSet(viewsets.ModelViewSet):
-    queryset = Elementmodule.objects.all()
+    queryset = ElementModule.objects.all()
     serializer_class = ElementmoduleSerializer
 
 
@@ -51,7 +56,6 @@ class NaturecoursViewSet(viewsets.ModelViewSet):
     queryset = Naturecours.objects.all()
     serializer_class = Naturecoursserializer
 
-
-class ReservationViewSet(viewsets.ModelViewSet):
-    queryset = Reservation.objects.all()
-    serializer_class = ReservationSerializer
+class SemestreViewSet(viewsets.ModelViewSet):
+    queryset = Semestre.objects.all()
+    serializer_class = SemestreSerializer

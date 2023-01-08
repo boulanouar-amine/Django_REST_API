@@ -1,0 +1,61 @@
+codefiliere,codemodule,codeeltmodule,libelleeltmodule,coefficient,vh_cm,vh_td,vh_tp,vh_ec
+LPGLAASRI,M01,M01A,Génie logiciel,0.5,15,6,0,3
+LPGLAASRI,M01,M01B,Méthodes agiles,0.5,12,9,0,3
+LPGLAASRI,M02,M02A,Programmation Orientée Objet avancée en Java,0.7,12,8,12,3
+LPGLAASRI,M02,M02B,Programmation répartie en java : Java RMI,0.3,7.5,3,3,1.5
+LPGLAASRI,M03,M03A,Développement web avec Java EE,0.7,12,8,12,3
+LPGLAASRI,M03,M03B,Programmation Android,0.3,6,3,4.5,1.5
+LPGLAASRI,M04,M04A,Commutation de réseau local(CCNA3),0.5,9,6,6,3
+LPGLAASRI,M04,M04B,Réseau étendu (CCNA4),0.5,9,6,6,3
+LPGLAASRI,M05,M05A,Configuration et dépannage d’une infrastructure réseau Windows Server,0.5,9,6,6,3
+LPGLAASRI,M05,M05B,Planification et administration avancé d’un serveur Windows,0.5,9,6,6,3
+LPGLAASRI,M06,M06A,Entrepôts de données,0.44,12,0,6,3
+LPGLAASRI,M06,M06B,Systèmes d’aide à la décision,0.56,15,0,9,3
+LPGLAASRI,M07,M07A,Patrons de conception,0.54,15,6,4,2
+LPGLAASRI,M07,M07B,FrameWorks  Java EE,0.46,12,3,6,2
+LPGLAASRI,M08,M08A,Administration avancée des systèmes et réseaux sous Linux,0.6,9,6,9,3
+LPGLAASRI,M08,M08B,IP V6 ,0.4,9,3,4.5,1.5
+LPGLAASRI,M09,M09A,Anglais pour NTIC,0.45,0,18,0,2
+LPGLAASRI,M09,M09B,Interface Homme-Machine,0.55,12,6,9,3
+LPGLAASRI,M10-11-12,M10A,Travail réalisé,0.4,,,,
+LPGLAASRI,M10-11-12,M10B,Rapport,0.3,,,,
+LPGLAASRI,M10-11-12,M10C,Exposé,0.3,,,,
+GI,M01,M01A,Anglais,0.45,0,39,0,3
+GI,M01,M01B,Français,0.4,0,39,0,3
+GI,M01,M01C,Communication-Multimédia 1,0.15,14,0,0,1
+GI,M02,M02A,Algébre lineaire et géometrie,0.7,36,30,0,3
+GI,M02,M02B,Math-Analyse 1,0.3,15,12,0,3
+GI,M03,M03A,Architecture - circuits logiques,0.35,12,9,12,3
+GI,M03,M03B,Architectures-microprocesseurs,0.35,12,9,9,3
+GI,M03,M03C,Logique booléenne,0.3,15,12,0,3
+GI,M04,M04A,Algorithmique et langage de programmation,0.75,24,21,24,3
+GI,M04,M04B,Technologie Web 1,0.25,15,0,9,3
+GI,M05,M05A,TEC ,0.25,0,23,0,2
+GI,M05,M05B,Economie générale et Organisation des entreprises ,0.6,39,18,0,3
+GI,M05,M05C,Réseaux sociaux – sécurisation  des informations privées,0.15,14,0,0,1
+GI,M06,M06B,Technologie Web II ,0.3,27,21,18,3
+GI,M07,M07A, Fondements des systèmes d’exploitation ,0.35,21,9,0,3
+GI,M07,M07B, Linux – Commandes et programmation Shell ,0.25,0,0,24,3
+GI,M07,M07C, Fondements des réseaux (CCNA1) ,0.4,21,0,15,3
+GI,M08,M08A,Analyse et conception des systèmes d’information ,0.45,21,12,6,3
+GI,M08,M08B,Bases de Données ,0.55,27,9,18,3
+GI,M09,M09A,Anglais pour NTIC & TEC,0.4,0,36,0,4
+GI,M09,M09B,Droit et culture d'entrerprise,0.45,30,12,0,3
+GI,M09,M09C,Communication – multimédia II,0.15,14,0,0,1
+GI,M10,M10A,UML,0.4,21,12,6,3
+GI,M10,M10B,Programmation orientée objet,0.6,27,12,15,3
+GI,M11,M11A,Réseaux haut débit et    protocoles,0.45,27,0,15,3
+GI,M11,M11B,Laboratoires Cisco(CCNA2),0.55,21,0,30,3
+GI,M12,M12A,Administration système et réseaux sous Windows server,0.4,15,0,21,3
+GI,M12,M12B,Administration système et  réseaux sous Linux,0.4,15,0,21,3
+GI,M12,M12C,Administration Bases de données,0.2,9,0,9,3
+GI,M13,M13A,Bases de données –programmation,0.45,18,9,15,3
+GI,M13,M13B,Gestion de projet,0.25,15,9,0,3
+GI,M13,M13C,Introduction à la théorie des langages,0.3,15,9,0,3
+GI,M14,M14A,Math-Analyse II,0.25,12,12,0,3
+GI,M14,M14B,Probabilités statistiques,0.5,21,24,0,3
+GI,M14,M14C,Compléments de mathématiques générales,0.25,12,9,0,3
+GI,M15,M15A,Rapport ,0.6,,,,
+GI,M15,M15B,Exposé,0.4,,,,
+GI,M16,M16A,stage initiation ,0.2,,,,
+GI,M16,M16B,stage technique ,0.8,,,,

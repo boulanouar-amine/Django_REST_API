@@ -38,8 +38,14 @@ class ClasseSerializer(serializers.ModelSerializer):
 
 class ElementmoduleSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Elementmodule
-        fields = '__all__'
+        model = ElementModule
+        fields = ['codemodule','codeelmodule','libelleelmodule','coefficient','vh_cm','vh_td','vh_tp','vh_ec']
+
+class ClassEtudiantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClassEtudiant
+
+        fields = ['codeclass','numinscription']
 
 class ModuleSerializer(serializers.ModelSerializer):
     class Meta:
@@ -54,11 +60,6 @@ class InfosuretudiantSerializer(serializers.ModelSerializer):
 class Naturecoursserializer(serializers.ModelSerializer):
     class Meta:
         model = Naturecours
-        fields = '__all__'
-
-class ReservationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Reservation
         fields = '__all__'
 
 class Salleserializer(serializers.ModelSerializer):
@@ -80,3 +81,4 @@ class SessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Session
         fields = '__all__'
+
